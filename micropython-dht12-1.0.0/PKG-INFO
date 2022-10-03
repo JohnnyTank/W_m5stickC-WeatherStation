@@ -1,0 +1,14 @@
+Metadata-Version: 1.1
+Name: micropython-dht12
+Version: 1.0.0
+Summary: MicroPython library for the DHT12 temperature and humidity sensor.
+Home-page: https://github.com/mcauser/micropython-dht12
+Author: Mike Causer
+Author-email: mcauser@gmail.com
+License: MIT
+Description: This library lets you communicate with an Aosong DHT12 temperature and humidity sensor over I2C.
+Keywords: dht12 aosong dht temperature humidity micropython
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Programming Language :: Python :: Implementation :: MicroPython
+Classifier: License :: OSI Approved :: MIT License
