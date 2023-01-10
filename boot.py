@@ -4,10 +4,10 @@
 #import webrepl
 #webrepl.start()
 from machine import Pin
-import M5Stick
+
 from time import sleep_ms
 
-led = Pin(M5Stick.RED_LED, Pin.OUT)
+led = Pin(10, Pin.OUT)
 for i in range (5):
     led.off()
     sleep_ms(100)
