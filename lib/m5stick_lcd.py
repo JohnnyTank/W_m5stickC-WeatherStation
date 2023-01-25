@@ -236,22 +236,27 @@ class ST7735(framebuf.FrameBuffer):
     
     def draw_vline(self, x, y, l, color):
         for i in range(l):
-            self.set_pixel(x, y, color)
+            self.set_pixel(x, y+i, color)
             
     def draw_line(self, x0, y0, x1, y1, color):
         m=(y1-y0)/(x1-x0)
-        for x in range(x0,x1):
-            y = int(m * x + y0-m*x0)
-            self.set_pixel(x, y, color)
+        if (x0<x1):
+            for x in range(x0,x1):
+                y = int(m * x + y0-m*x0)
+                self.set_pixel(x, y, color)
+        else:
+            for x in range(x1,x0):
+                y = int(m * x + y0-m*x0)
+                self.set_pixel(x, y, color)
             
     def draw_rect(self, x, y, w, h, color, filled):
         self.draw_line(x, y, x+w, y, color)
-        self.draw_line(x, y+h, w+w, y+h, color)
+        self.draw_line(x, y+h, x+w, y+h, color)
         self.draw_vline(x, y, h, color)
         self.draw_vline(x+w, y, h, color)        
         if filled:
             for i in range(y+1, y+h):
-                self.draw_line(x, i, x + w-1, i, color)
+                self.draw_line(x, i, x + w, i, color)
               
         
 
@@ -262,10 +267,14 @@ if (__name__ == '__main__'):
     lcd.set_rotate(ROTATE_90)
     i = 0
     for color in c_codes:
-        lcd.draw_string(c_text[i], 2, 2, color, MONACO12)
-        lcd.show()
-        i += 1
-        sleep_ms(100)
-        lcd.clear_screen()
-    lcd.draw_rect(10, 10, 10, 20, WHITE, True)
+         lcd.draw_string(c_text[i], 2, 2, color, MONACO12)
+         lcd.show()
+         i += 1
+         time.sleep_ms(100)
+         lcd.clear_screen()
+    lcd.draw_rect(10, 10, 10, 10, WHITE, False)
+    lcd.draw_rect(30, 10, 10, 10, WHITE, True)
+    lcd.draw_line(0,20,159,79, YELLOW)
+    lcd.draw_line(159,20,0,79,YELLOW)
+    lcd.show()
    
