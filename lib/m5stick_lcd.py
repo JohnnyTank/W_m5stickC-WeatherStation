@@ -180,6 +180,7 @@ class ST7735(framebuf.FrameBuffer):
     # ******** Routines by O. Werner *******
     # Version 1.2 - 9.9.2022
     # Version 1.3 - 27.09.2022
+    # Version 1.4 - 25.1.2023
     def clear_screen(self):
         self.fill(0)
         #self.show()
